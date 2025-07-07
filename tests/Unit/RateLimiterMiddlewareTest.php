@@ -4,7 +4,6 @@ namespace Vectorify\GuzzleRateLimiter\Tests\Unit;
 
 use GuzzleHttp\Promise\Create;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
@@ -25,8 +24,6 @@ class RateLimiterMiddlewareTest extends TestCase
     }
 
     #[Test]
-    #[CoversMethod(RateLimiterMiddleware::class, '__construct')]
-    #[CoversMethod(RateLimiterMiddleware::class, '__invoke')]
     public function middleware_processes_successful_response(): void
     {
         $request = $this->createMock(RequestInterface::class);
@@ -51,7 +48,6 @@ class RateLimiterMiddlewareTest extends TestCase
     }
 
     #[Test]
-    #[CoversMethod(RateLimiterMiddleware::class, '__invoke')]
     public function middleware_handles_rate_limit_response(): void
     {
         $request = $this->createMock(RequestInterface::class);

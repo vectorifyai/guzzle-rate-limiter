@@ -3,7 +3,6 @@
 namespace Vectorify\GuzzleRateLimiter\Tests\Unit;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -23,8 +22,6 @@ class RateLimiterTest extends TestCase
     }
 
     #[Test]
-    #[CoversMethod(RateLimiter::class, '__construct')]
-    #[CoversMethod(RateLimiter::class, 'checkRateLimit')]
     public function check_rate_limit_does_nothing_when_no_cache_data(): void
     {
         // Should not throw any exceptions or delay
@@ -37,8 +34,6 @@ class RateLimiterTest extends TestCase
     }
 
     #[Test]
-    #[CoversMethod(RateLimiter::class, 'updateRateLimit')]
-    #[CoversMethod(RateLimiter::class, 'getHeader')]
     public function update_rate_limit_from_response_headers(): void
     {
         $response = $this->createMockResponse([
@@ -56,7 +51,6 @@ class RateLimiterTest extends TestCase
     }
 
     #[Test]
-    #[CoversMethod(RateLimiter::class, 'handleRateLimitResponse')]
     public function handle_rate_limit_response_sets_zero_remaining(): void
     {
         $response = $this->createMockResponse([
@@ -77,7 +71,6 @@ class RateLimiterTest extends TestCase
     }
 
     #[Test]
-    #[CoversMethod(RateLimiter::class, 'checkRateLimit')]
     public function check_rate_limit_delays_when_few_requests_remaining(): void
     {
         // Set up low remaining requests
