@@ -1,0 +1,43 @@
+{
+    "name": "vectorify/guzzle-rate-limiter",
+    "description": "Guzzle middleware for preventive rate limiting with multi-store support, progressive delays, and cross-process coordination.",
+    "keywords": [
+        "php",
+        "guzzle",
+        "rate limiting",
+        "middleware",
+        "laravel",
+        "symfony",
+        "cache",
+        "api"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
+        "psr/log": "^3.0",
+        "monolog/monolog": "^3.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "illuminate/cache": "^10.0|^11.0|^12.0",
+        "symfony/cache": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vectorify\\GuzzleRateLimiter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vectorify\\GuzzleRateLimiter\\Tests\\": "tests/"
+        }
+    },
+    "suggest": {
+        "illuminate/cache": "For Laravel cache store integration",
+        "symfony/cache": "For Symfony cache store integration"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

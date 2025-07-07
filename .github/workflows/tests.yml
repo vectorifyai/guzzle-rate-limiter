@@ -1,0 +1,31 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: ['8.2', '8.3', '8.4']
+        stability: [prefer-lowest, prefer-stable]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --no-interaction --no-scripts --no-progress --no-ansi
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+
+      - name: Execute tests
+        run: vendor/bin/phpunit --no-coverage

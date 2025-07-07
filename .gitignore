@@ -1,0 +1,10 @@
+/vendor
+/composer.lock
+/.phpunit.result.cache
+/.idea
+/.history
+/.vscode
+/.vagrant
+/.phpunit.cache
+_ide_helper.php
+.phpstorm.meta.php
