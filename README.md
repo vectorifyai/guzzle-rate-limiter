@@ -1,5 +1,10 @@
 # Rate limiter middleware for Guzzle
 
+[![Latest Version](https://img.shields.io/packagist/v/vectorifyai/guzzle-rate-limiter.svg?label=latest&style=flat)](https://packagist.org/packages/vectorifyai/guzzle-rate-limiter)
+[![Total Downloads](https://img.shields.io/packagist/dt/vectorifyai/guzzle-rate-limiter.svg?style=flat)](https://packagist.org/packages/vectorifyai/guzzle-rate-limiter)
+[![Tests](https://img.shields.io/github/actions/workflow/status/vectorifyai/guzzle-rate-limiter/tests.yml?label=tests&style=flat)](https://github.com/vectorifyai/guzzle-rate-limiter/actions/workflows/tests.yml)
+[![License](https://img.shields.io/packagist/l/vectorifyai/guzzle-rate-limiter.svg?style=flat)](LICENSE.md)
+
 A sophisticated `Guzzle` middleware for preventive rate limiting with multi-store support, progressive delays, and cross-process coordination. It works in accordance with the [IETF standard](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-ratelimit-headers) by using the `X-RateLimit-Remaining` (number of requests remaining in the current rate limit window) and `Retry-After` (number of seconds to wait before retrying the request again) values available in the response headers.
 
 ## Features
@@ -14,7 +19,7 @@ A sophisticated `Guzzle` middleware for preventive rate limiting with multi-stor
 ## Installation
 
 ```bash
-composer require vectorify/guzzle-rate-limiter
+composer require vectorifyai/guzzle-rate-limiter
 ```
 
 ## Quick Start
@@ -84,7 +89,7 @@ Pull requests are more than welcome. You must follow the PSR coding standards.
 
 ## Security
 
-Please review [our security policy](https://github.com/vectorifyai/laravel-vectorify/security/policy) on how to report security vulnerabilities.
+Please review [our security policy](https://github.com/vectorifyai/guzzle-rate-limiter/security/policy) on how to report security vulnerabilities.
 
 ## License
 
