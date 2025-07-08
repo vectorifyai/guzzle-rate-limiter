@@ -1,5 +1,5 @@
 {
-    "name": "vectorify/guzzle-rate-limiter",
+    "name": "vectorifyai/guzzle-rate-limiter",
     "description": "Guzzle middleware for preventive rate limiting with multi-store support, progressive delays, and cross-process coordination.",
     "keywords": [
         "php",
