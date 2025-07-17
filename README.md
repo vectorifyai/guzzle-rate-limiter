@@ -10,7 +10,7 @@ A sophisticated `Guzzle` middleware for preventive rate limiting with multi-stor
 ## Features
 
 - **Intelligent Rate Limiting**: Progressive delays based on remaining API quota
-- **Multi-Store Support**: InMemory, Laravel Cache, Symfony Cache, and more
+- **Multi-Store Support**: InMemory, Laravel Cache, Symfony Cache, Filesystem, and more
 - **Cross-Process Coordination**: Share rate limit state across multiple processes
 - **Automatic Recovery**: Handles 429 responses with exponential backoff
 - **Flexible Configuration**: Customizable thresholds and delays
@@ -67,6 +67,28 @@ use Symfony\Component\Cache\Adapter\RedisAdapter;
 $cache = new RedisAdapter(/* redis client */);
 $store = new SymfonyStore($cache, 'api:rate_limit');
 $middleware = new RateLimiterMiddleware($store);
+```
+
+### Filesystem Integration
+
+```php
+use Vectorify\GuzzleRateLimiter\Stores\FilesystemStore;
+use League\Flysystem\Local\LocalFilesystemAdapter;
+
+// Local filesystem
+$adapter = new LocalFilesystemAdapter('/path/to/cache');
+$store = new FilesystemStore($adapter);
+$middleware = new RateLimiterMiddleware($store);
+
+// AWS S3
+use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
+$s3Adapter = new AwsS3V3Adapter($s3Client, $bucket, $prefix);
+$store = new FilesystemStore($s3Adapter);
+
+// SFTP
+use League\Flysystem\PhpseclibV3\SftpAdapter;
+$sftpAdapter = new SftpAdapter(/* SFTP connection settings */);
+$store = new FilesystemStore($sftpAdapter);
 ```
 
 ### Advanced Configuration

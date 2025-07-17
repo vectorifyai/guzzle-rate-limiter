@@ -22,7 +22,9 @@
     "require-dev": {
         "phpunit/phpunit": "^11.5",
         "illuminate/cache": "^10.0|^11.0|^12.0",
-        "symfony/cache": "^7.0"
+        "symfony/cache": "^7.0",
+        "league/flysystem": "^3.0",
+        "league/flysystem-memory": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -36,7 +38,8 @@
     },
     "suggest": {
         "illuminate/cache": "For Laravel cache store integration",
-        "symfony/cache": "For Symfony cache store integration"
+        "symfony/cache": "For Symfony cache store integration",
+        "league/flysystem": "For filesystem-based cache store integration"
     },
     "minimum-stability": "stable",
     "prefer-stable": true
