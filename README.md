@@ -11,7 +11,7 @@ A sophisticated `Guzzle` middleware for preventive rate limiting with multi-stor
 
 - **Intelligent Rate Limiting**: Progressive delays based on remaining API quota
 - **Multi-Store Support**: InMemory, Laravel Cache, Symfony Cache, Filesystem, and more
-- **Cross-Process Coordination**: Share rate limit state across multiple processes
+- **Cross-Process Coordination**: Share rate limit state across multiple processes (i.e. queue jobs)
 - **Automatic Recovery**: Handles 429 responses with exponential backoff
 - **Flexible Configuration**: Customizable thresholds and delays
 - **PSR-3 Logging**: Built-in logging with configurable levels
@@ -31,10 +31,10 @@ use Vectorify\GuzzleRateLimiter\RateLimiterMiddleware;
 use Vectorify\GuzzleRateLimiter\Stores\InMemoryStore;
 
 $stack = HandlerStack::create();
-$stack->push(new RateLimiterMiddleware(new InMemoryStore()));
+$stack->push(new RateLimiterMiddleware(new InMemoryStore));
 
 $client = new Client([
-    'handler' => $stack
+    'handler' => $stack,
 ]);
 ```
 
@@ -46,7 +46,7 @@ $client = new Client([
 use Vectorify\GuzzleRateLimiter\RateLimiterMiddleware;
 use Vectorify\GuzzleRateLimiter\Stores\InMemoryStore;
 
-$middleware = new RateLimiterMiddleware(new InMemoryStore());
+$middleware = new RateLimiterMiddleware(new InMemoryStore);
 ```
 
 ### Laravel Integration
@@ -95,9 +95,9 @@ $store = new FilesystemStore($sftpAdapter);
 
 ```php
 $middleware = new RateLimiterMiddleware(
-    store: new InMemoryStore(),
+    store: new InMemoryStore,
     cachePrefix: 'my_api:rate_limit',
-    logger: $customLogger
+    logger: $customLogger,
 );
 ```
 
